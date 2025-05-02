@@ -26,3 +26,19 @@ npm start
 
 Frontend is served at: http://localhost:3000
 Backend is available at: http://localhost:8080
+
+## Running tests
+
+For these both backend and frontend should both be already running
+
+**JwtUtilsTest**
+
+```bash
+cd /opt/kjc/int/JwtAuthApp-KotlinReact/backend
+./gradlew clean
+./gradlew test --tests com.katariinatuulia.backend.JwtUtilsTest
+```
+
+## Versions
+
+Java 21, Kotlin 1.9.25, Spring Boot 3.4.5, React 19.1., Typescript 4.9.5
