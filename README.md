@@ -27,6 +27,28 @@ npm start
 Frontend is served at: http://localhost:3000
 Backend is available at: http://localhost:8080
 
+## Using API with curl
+
+Navigate to backend folder:
+```bash
+cd /opt/kjc/int/JwtAuthApp-KotlinReact/backend/
+```
+
+Request token:
+```bash
+curl http://localhost:8080/api/public/token -w "\n"
+```
+
+Trying to access without token:
+```bash
+curl http://localhost:8080/api/secure/data -w "\n"
+```
+
+Access with token:
+```bash
+curl -H "Authorization: Bearer YOUR_TOKEN_HERE" http://localhost:8080/api/secure/data -w "\n"
+```
+
 ## Running tests
 
 For these both backend and frontend should both be already running

@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory
 
 @Component
 class JwtFilter(private val jwtUtils: JwtUtils) : OncePerRequestFilter() {
-    private val logger = LoggerFactory.getLogger(JwtFilter::class.java)
+    private val log = LoggerFactory.getLogger(JwtFilter::class.java)
 
     override fun doFilterInternal(
         request: HttpServletRequest,
