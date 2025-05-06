@@ -1,4 +1,4 @@
-package com.katariinatuulia.backend.auth
+package com.katariinatuulia.backend.jwt_auth
 
 //******************** IMPORTS ********************//
 

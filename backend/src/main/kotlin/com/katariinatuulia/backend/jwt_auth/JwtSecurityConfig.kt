@@ -1,8 +1,8 @@
-package com.katariinatuulia.backend.auth
+package com.katariinatuulia.backend.jwt_auth
 
 //******************** IMPORTS ********************//
 
-import com.katariinatuulia.backend.auth.JwtFilter
+import com.katariinatuulia.backend.jwt_auth.JwtFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

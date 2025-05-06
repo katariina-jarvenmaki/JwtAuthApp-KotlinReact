@@ -1,7 +1,8 @@
-package com.katariinatuulia.backend.auth
+package com.katariinatuulia.backend.jwt_auth
 
 //******************** IMPORTS ********************//
 
+import com.katariinatuulia.backend.jwt_auth.JwtUtils
 import org.springframework.web.filter.OncePerRequestFilter
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource
 import org.springframework.security.core.context.SecurityContextHolder
