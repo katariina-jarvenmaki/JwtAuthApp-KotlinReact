@@ -22,7 +22,26 @@ npm install
 npm start
 ```
 
-3. **Result**:
+3. **Postegre**:
+
+On terminal:
+
+```bash
+cd /opt/kjc/int/JwtAtuhApp-KotlinReact/backend
+sudo -i -u postgres
+psql
+psql
+```
+
+On Postgre-console:
+
+```bash
+CREATE USER usr_jtwauthapp_kotlinreact WITH PASSWORD 'TDen}Giv{S8q';
+CREATE DATABASE jtwauthapp_kotlinreact OWNER usr_jtwauthapp_kotlinreact;
+GRANT ALL PRIVILEGES ON DATABASE jtwauthapp_kotlinreact TO usr_jtwauthapp_kotlinreact;
+```
+
+4. **Result**:
 
 Frontend is served at: http://localhost:3000
 Backend is available at: http://localhost:8080
