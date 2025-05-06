@@ -1,7 +1,8 @@
-package com.katariinatuulia.com.backend.jwt_auth
+package com.katariinatuulia.backend.jwt_auth
 
 //******************** IMPORTS ********************//
 
+import com.katariinatuulia.backend.jwt_auth.UserRepository
 import jakarta.persistence.*
 
 @Entity

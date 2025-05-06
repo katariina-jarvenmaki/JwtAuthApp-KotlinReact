@@ -30,15 +30,14 @@ On terminal:
 cd /opt/kjc/int/JwtAtuhApp-KotlinReact/backend
 sudo -i -u postgres
 psql
-psql
 ```
 
 On Postgre-console:
 
 ```bash
-CREATE USER usr_jtwauthapp_kotlinreact WITH PASSWORD 'TDen}Giv{S8q';
-CREATE DATABASE jtwauthapp_kotlinreact OWNER usr_jtwauthapp_kotlinreact;
-GRANT ALL PRIVILEGES ON DATABASE jtwauthapp_kotlinreact TO usr_jtwauthapp_kotlinreact;
+CREATE USER usr_jwtauthapp_kotlinreact WITH PASSWORD 'TDen}Giv{S8q';
+CREATE DATABASE jwtauthapp_kotlinreact OWNER usr_jwtauthapp_kotlinreact;
+GRANT ALL PRIVILEGES ON DATABASE jwtauthapp_kotlinreact TO usr_jwtauthapp_kotlinreact;
 ```
 
 4. **Result**:
@@ -66,6 +65,11 @@ curl http://localhost:8080/api/secure/data -w "\n"
 Access with token:
 ```bash
 curl -H "Authorization: Bearer YOUR_TOKEN_HERE" http://localhost:8080/api/secure/data -w "\n"
+```
+
+Test login with curl:
+```bash
+curl -X POST http://localhost:8080/api/auth/login -H "Content-Type: application/json" -d '{"username": "admin", "password": "admin123"}' -w "\n"
 ```
 
 ## Running tests
