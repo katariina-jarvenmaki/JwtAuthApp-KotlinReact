@@ -18,7 +18,7 @@ class SecurityConfig(private val jwtFilter: JwtFilter) {
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            .csrf { it.disable() }
+            .csrf { it.disable() } // CSRF on poistettu, koska käytämme JWT-pohjaista autentikointia, jossa ei käytetä evästeitä (cookieja). CSRF-hyökkäykset kohdistuvat evästepohjaisiin sessioihin, eikä tämä riski ole läsnä token-pohjaisessa järjestelmässä.
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests {
                 it
