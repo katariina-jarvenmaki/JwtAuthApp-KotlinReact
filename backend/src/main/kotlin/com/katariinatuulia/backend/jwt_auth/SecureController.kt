@@ -2,6 +2,7 @@ package com.katariinatuulia.backend.jwt_auth
 
 //******************** IMPORTS ********************//
 
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -12,8 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 class SecureController {
 
     @GetMapping("/data")
-    fun securedData(): Map<String, String> {
-        val user = SecurityContextHolder.getContext().authentication.name
-        return mapOf("message" to "Hello, $user! You have access.")
+    fun secureData(): ResponseEntity<String> {
+        return ResponseEntity.ok("This is secured data")
     }
 }

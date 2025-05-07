@@ -26,7 +26,7 @@ const Dashboard = () => {
           localStorage.removeItem("username");
           /* Return to home */
           window.location.reload();
-          navigate("/");
+          navigate("/", { replace: true });
         }} 
         className="logout">
         Logout

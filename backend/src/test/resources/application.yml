@@ -1,0 +1,5 @@
+jwt:
+  secret: coNofsnoCrrlN3wMFiKSJ3dhfk7OpWBYhqkfervuj
+admin:
+  username: admin
+  password: admin123

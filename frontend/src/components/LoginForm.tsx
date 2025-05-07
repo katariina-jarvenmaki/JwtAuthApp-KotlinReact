@@ -21,7 +21,7 @@ const LoginForm = () => {
       localStorage.setItem("jwt", data.token);
       localStorage.setItem("username", username);
       /* Go to Dashboard */
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
       window.location.reload();
 
     } catch (err) {
