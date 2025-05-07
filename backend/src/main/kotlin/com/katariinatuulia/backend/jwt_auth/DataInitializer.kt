@@ -1,5 +1,7 @@
 package com.katariinatuulia.backend.jwt_auth
 
+//******************** IMPORTS ********************//
+
 import com.katariinatuulia.backend.jwt_auth.UserRepository
 import com.katariinatuulia.backend.jwt_auth.User
 import jakarta.annotation.PostConstruct

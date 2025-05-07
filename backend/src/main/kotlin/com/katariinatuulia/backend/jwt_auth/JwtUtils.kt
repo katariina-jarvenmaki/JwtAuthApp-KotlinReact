@@ -1,5 +1,7 @@
 package com.katariinatuulia.backend.jwt_auth
 
+//******************** IMPORTS ********************//
+
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.JwtException

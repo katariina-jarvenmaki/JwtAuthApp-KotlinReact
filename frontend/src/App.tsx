@@ -1,25 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import axios from "axios";
+
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard'
 
 function App() {
+  const [username, setUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername && storedUsername !== "undefined") {
+      setUsername(storedUsername);
+    }
+  
+    // Check token expiration
+    const interceptor = axios.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response && error.response.status === 401) {
+          // Token expired or invalid
+          localStorage.removeItem("jwt");
+          localStorage.removeItem("username");
+          window.location.href = "/"; 
+        }
+        return Promise.reject(error);
+      }
+    );
+  
+    return () => {
+      axios.interceptors.response.eject(interceptor); 
+    };
+  }, []);  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav style={{ padding: '1rem', background: '#eee', display: 'flex', justifyContent: 'space-between' }}>
+        <div>
+          <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
+          <Link to="/dashboard">Dashboard</Link>
+        </div>
+        <div id="hello-user">
+          {username && username !== "undefined" && <span>Hello, {username}!</span>}
+        </div>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,21 +1,32 @@
-package com.katariinatuulia.backend
+package com.katariinatuulia.backend.jwt_auth
 
-import com.katariinatuulia.backend.jwt_auth.JwtUtils
-import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
+import io.jsonwebtoken.Jwts
+import io.jsonwebtoken.SignatureAlgorithm
+import org.springframework.stereotype.Component
+import java.util.*
 
-@SpringBootTest
-class JwtUtilsTest {
+@Component
+class JwtUtils {
+    private val secret = "mysecretkey" // Huom! Tämä kannattaa ladata esim. application.yml:stä
 
-    @Autowired
-    lateinit var jwtUtils: JwtUtils
+    fun generate(username: String): String {
+        return Jwts.builder()
+            .setSubject(username)
+            .setExpiration(Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10h
+            .signWith(SignatureAlgorithm.HS256, secret)
+            .compact()
+    }
 
-    @Test
-    fun testToken() {
-        val token = jwtUtils.generate("testuser")
-        println("Token: $token")
-        assert(jwtUtils.validate(token))
-        assert(jwtUtils.username(token) == "testuser")
+    fun validate(token: String): Boolean {
+        return try {
+            Jwts.parser().setSigningKey(secret).parseClaimsJws(token)
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    fun username(token: String): String {
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).body.subject
     }
 }

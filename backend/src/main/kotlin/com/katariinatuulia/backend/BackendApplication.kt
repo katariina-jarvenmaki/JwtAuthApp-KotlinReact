@@ -1,5 +1,7 @@
 package com.katariinatuulia.backend
 
+//******************** IMPORTS ********************//
+
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
