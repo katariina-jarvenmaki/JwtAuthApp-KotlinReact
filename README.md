@@ -3,7 +3,7 @@ A secure single-page app showcasing JWT authentication, built with Spring Boot +
 
 ```bash
 APP: kjc-int  
-DIRECTORY STRUCTURE: /opt/kjc/int/kk-single-page
+DIRECTORY STRUCTURE: /opt/kjc/int/JwtAuthApp-KotlinReact
 ```
 
 ## Installation & Setup
@@ -78,6 +78,11 @@ curl -H "Authorization: Bearer YOUR_TOKEN_HERE" http://localhost:8080/api/secure
 Test login with curl:
 ```bash
 curl -X POST http://localhost:8080/api/auth/login -H "Content-Type: application/json" -d '{"username": "admin", "password": "admin123"}' -w "\n"
+```
+
+Trying login with invalid credentials:
+```bash
+curl -X POST http://localhost:8080/api/auth/login -H "Content-Type: application/json" -d '{"username": "user", "password": "pass"}' -w "\n"
 ```
 
 ## Running tests
