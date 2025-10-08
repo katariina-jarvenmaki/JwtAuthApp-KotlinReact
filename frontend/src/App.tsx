@@ -13,7 +13,7 @@ function App() {
     if (storedUsername && storedUsername !== "undefined") {
       setUsername(storedUsername);
     }
-  
+
     // Check token expiration
     const interceptor = axios.interceptors.response.use(
       response => response,
@@ -27,7 +27,7 @@ function App() {
         return Promise.reject(error);
       }
     );
-  
+
     return () => {
       axios.interceptors.response.eject(interceptor); 
     };
@@ -37,11 +37,11 @@ function App() {
     <Router>
       <nav style={{ padding: '1rem', background: '#eee', display: 'flex', justifyContent: 'space-between' }}>
         <div>
-          <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-          <Link to="/dashboard">Dashboard</Link>
+          {!username && <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>}
+          {username && <Link to="/dashboard">Dashboard</Link>}
         </div>
         <div id="hello-user">
-          {username && username !== "undefined" && <span>Hello, {username}!</span>}
+          {username && <span>Hello, {username}!</span>}
         </div>
       </nav>
       <Routes>
